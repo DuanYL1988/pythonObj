@@ -12,6 +12,7 @@ class RandomWalk():
         # 设置原点
         self.x_value = [0]
         self.y_value = [0]
+        self.final_step = ""
 
     def fill_walk(self):
         """计算漫步所有点"""
@@ -38,6 +39,8 @@ class RandomWalk():
             self.x_value.append(next_x)
             self.y_value.append(next_y)
 
+        self.final_step = str(self.x_value[-1]) + "/" + str(self.y_value[-1])
+
 while True:
   rw = RandomWalk()
   rw.fill_walk()
@@ -52,8 +55,11 @@ while True:
   # 突出起点和终点
   plt.scatter(0,0,c='green',edgecolor='none',s=20)
   plt.scatter(rw.x_value[-1],rw.y_value[-1],c='red',edgecolor='none',s=20)
+  plt.title(rw.final_step)
   plt.show()
 
   keepRunning = input("try again?(y/n) :")
   if keepRunning == 'n':
     break
+
+
